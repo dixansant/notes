@@ -1,0 +1,170 @@
+BODY {
+    apadding-top: 60px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.is-invalid {
+    border-color: red;
+}
+
+
+
+
+.alink {
+    padding: 10px;
+    color: #666;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#main_menu LI {
+    float: left;
+    padding: 10px;
+}
+
+#scenes {
+
+    display: table;
+    width: 100%;
+
+    height: 100%;
+}
+
+#scenes .scene {
+
+    display: table-row;
+
+}
+
+#scenes .scene > DIV{
+
+    display: table-cell;
+
+}
+
+#blockscene {
+    margin: 10px;
+
+}
+
+.greyblock {
+    padding: 20px;
+    background-color: #eee;
+    margin-bottom: 15px;
+}
+
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+
+/* BLOQUES EN LA PANTALLA INICIAL*/
+
+.block-menu {
+    margin: 10px 10px;
+    padding: 5px 0px;
+    width: 200px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bolder;
+    border-radius: 1px;
+    color: #FFF;
+    text-shadow: 0px 0px 3px rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+.block-menu.arma {
+    background-color: #f19402;
+}
+
+.block-menu.prearma {
+    background-color: #c90119;
+
+}
+
+
+
+/* LANGUAGE PICKER*/
+
+.roundborders {
+    border-radius: 5px;
+}
+
+.large:hover {
+    /*
+    don't forget the 1px border!
+    The first language is 40px heigh,
+    the others are 41px
+    */
+    height: 245px;
+}
+
+.errorzone > DIV {
+    padding: 10px;
+    text-align: center;
+
+}
+
+/* Label que suplanta el boton para el menu de usuario*/
+
+LABEL.dsdropdown {
+    padding-top: 2px;
+
+}
+
+/*
+.wizard-card .row > DIV {
+    padding-top: 20px;
+}
+*/
+
+/**/
+
+.loading {
+    position: fixed;
+    z-index: 5000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#zone_scenes {
+
+    z-index: 1;
+    top: 64px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.center-all {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.loading:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #0d0d0d;
+    opacity: 0.5;
+
+}
+
+
+/* BOOTSTRAP */
+
+
+.fs-12 {
+    font-size: 12px;
+    font-weight: normal;
+    color: #666;
+}
+
