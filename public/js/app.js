@@ -19,6 +19,8 @@ var failed = {
 
 $(function () {
 
+
+
     //alert(location.href)
     /*Eventos de Document*/
 
@@ -43,13 +45,9 @@ $(function () {
                 }
             }
 
-
-
-
             if ($(this).attr('addquery') == 'true') {
                 add_query($(this).serializeFormJSON());
             } else {
-
 
 
                 _ajax({
@@ -72,8 +70,8 @@ $(function () {
         //Evitar que se cierre el modal si es fijo
 
         $target = $($(this).prop('target'));
-       if ($target.get(0)==null && $(this).attr('fixed')=="1" && $(':focus').parents('.modal').get(0)!=this)
-          event.preventDefault();
+        if ($target.get(0) == null && $(this).attr('fixed') == "1" && $(':focus').parents('.modal').get(0) != this)
+            event.preventDefault();
 
     }).on('hidden.bs.modal', '.modal', function (event) {
 
@@ -130,6 +128,32 @@ $(function () {
         showMethod: 'slideDown',
         timeOut: 3000
     };
+
+
+    /* MENU */
+
+    //dropdown-menu-content
+
+
+    // evitar que al dar click en el contenido de un menu
+    // se oculte
+
+    $('.dropdown-menu-content').click(function(e){
+        e.stopPropagation();
+    })
+
+
+    $('.dropdown-submenu A').click(function (e) {
+       li=$(this).parent();
+        li.toggleClass('open');
+        if (li.find('UL').length>0) {
+            li.find('LI').removeClass('open')
+            e.stopPropagation();
+            return false;
+        }
+    })
+
+
 
 
 });
@@ -231,12 +255,11 @@ function hrefaction(isValidate) {
     }
 
 
-
     if (href.indexOf('http://') == 0 || href.indexOf('https://') == 0) {
-        bp = href.split(base_path+"/home");
-        href=bp[1];
+        bp = href.split(base_path + "/home");
+        href = bp[1];
 
-   }
+    }
 
 
     if (href.indexOf('http://') == -1 && href.indexOf('https://') == -1) {
@@ -248,7 +271,6 @@ function hrefaction(isValidate) {
         }
         href = '#!/home' + href
         if (href.substr(href.length - 1) == "/") href = href.substr(0, href.length - 1)
-
 
 
         location.href = href;
@@ -281,16 +303,13 @@ function relocate(xh) {
     xh = xh.split('?');
     lh = xh[0];
 
-    bp= lh.split(base_path);
-
+    bp = lh.split(base_path);
 
 
     var ph = bp[1].split('/');
 
 
-
     ph[1] = (ph[1] == '#' || ph[1] == '') ? '#!' : ph[1]
-
 
 
     if (ph[1] != '#!' && ph[1].substr(0, 1) != '#') {
@@ -309,8 +328,7 @@ function relocate(xh) {
     }
 
 
-
-    var go = base_path+ ph.join('/')
+    var go = base_path + ph.join('/')
 
 
     if (go == lh) {
@@ -402,13 +420,11 @@ function showscene(w, load = true) {
     }
 
 
-
     if (load) loadscene(pt)
 
 
     //else alert(pt[0])
 }
-
 
 
 function loadscene(w) {
@@ -423,8 +439,7 @@ function loadscene(w) {
 function _ajax(j) {
 
 
-
-    url =(j.url.indexOf('http://') == 0 || j.url.indexOf('https://') == 0)?j.url:base_path+j.url
+    url = (j.url.indexOf('http://') == 0 || j.url.indexOf('https://') == 0) ? j.url : base_path + j.url
 
 
     if (j.loading != false) $('.loading').show().fadeTo(200, 1)
@@ -442,21 +457,39 @@ function _ajax(j) {
                 checkFamily(this)
 
                 ex = $('#' + $(self).attr('id')).get(0);
+                prev = false;
+                prn = null;
                 if (ex != null) { // existe
+                    prn = $(ex).parent();
                     self = $(this).clone(true);
+                    prev = $(ex).prev().get(0);
                     $(this).remove();
                     if ($(ex).is('.requireonce')) {
                         return;
                     }
+
+                    //console.log($(self).attr('id') + " " +prev.get(0));
                 }
 
                 $(ex).remove();
-                var prn = $(self).attr('parent');
+                var prn = prn ? prn : $(self).attr('parent');
                 prnobj = (prn) ? prn : document.body
 
 
-                if (prn == null || (prn != null && $(prn).get(0) != null)) $(prnobj).append(self);
-                else {
+                if (prn == null || (prn != null && $(prn).get(0) != null)) {
+
+                    if (prev == false)
+                        $(prnobj).append(self);
+                    else {
+                        if (prev == null)
+                            $(prnobj).prepend(self);
+                        else
+                            $(prev).after(self);
+
+                    }
+
+
+                } else {
                     if ($(self).parent().is('.partial')) $(self).remove();
                 }
 
@@ -780,11 +813,11 @@ function enability() {
 
 
 /* Borra todas las scenas, al salir o entrar al sistema */
-function clearScenes(except){
+function clearScenes(except) {
     $('.scene[reference], .modal[reference]').each(function () {
-        ref= $(this).attr('reference');
+        ref = $(this).attr('reference');
         //if (ref != '/home' && ref != '/home/logout' && ref != 'errortemplate' $$ ref!=current)
-        if (ref != '/home/logout' && ref != 'errortemplate' && ref!=except) {
+        if (ref != '/home/logout' && ref != 'errortemplate' && ref != except) {
             //if ($(this).is('.modal') && $(this).is(':visible')) $(this).remove();  //$(this).prop('target',true).modal('hide')
             if ($(this).is('.modal')) $('.modal-backdrop').hide();  //$(this).prop('target',true).modal('hide')
             $(this).remove();

@@ -1,3 +1,19 @@
+@php
+    /*$aa=\App\Util\Umenu::all_menues_new('main.menu');
+    foreach ($aa as $k=>$it){
+        echo ($it->title);
+        //var_dump($it[0]);
+    }*/
+@endphp
+
+@php($menues = \App\Util\Umenu::all_menues_new('menu.main'))
+
+@extends('layouts.menu')
+@section('content_menu')
+@endsection
+
+
+{{--
 <ul class="nav navbar-nav navbar-right">
     <li><a href="#">Dashboard</a></li>
     <li><a href="#">Settings</a></li>
@@ -19,3 +35,4 @@
 <form class="navbar-form navbar-right">
     <input type="text" class="form-control" placeholder="Search...">
 </form>
+--}}

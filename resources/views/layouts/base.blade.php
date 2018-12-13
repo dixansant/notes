@@ -18,6 +18,10 @@
     <!-- CSS Files -->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" />
 
+    <link href="{{ asset('css/jquery-ui.min.css')}}" rel="stylesheet" />
+    <link href="{{ asset('css/jquery-ui.theme.min.css')}}" rel="stylesheet" />
+
+
     <link href="{{ asset('plugins/alertly/jquery.alertly.css')}}" rel="stylesheet">
     <link href="{{ asset('plugins/toastr/toastr.min.css')}}" rel="stylesheet">
     <link href="{{ asset('plugins/required/required.css')}}" rel="stylesheet">
@@ -45,6 +49,7 @@
     <script src="{{ asset('js/jquery-2.2.4.min.js')}}" type="text/javascript"></script>
     --}}
     <script src="{{ asset('js/jquery-3.1.1.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery-ui.min.js')}}" type="text/javascript"></script>
 
     <script src="{{ asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery.flot.min.js')}}" type="text/javascript"></script>

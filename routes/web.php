@@ -34,9 +34,10 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::get('home/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('home/register', 'Auth\RegisterController@register');
 
-// Password Reset Routes...
-//Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-//Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-//Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-//Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-
+// Admin
+// Menu
+Route::get('home/owner/menu.builder', 'OwnerController@showMenuAction')->name('admin.menu');
+Route::post('admin/newmenu', 'OwnerController@newMenuAction')->name('admin.newmenu');
+Route::post('admin/savemenu', 'OwnerController@saveMenuAction')->name('admin.save');
+Route::post('admin/movemenu', 'OwnerController@moveMenuAction')->name('admin.movemenu');
+Route::post('admin/removemenu', 'OwnerController@removeMenuAction')->name('admin.removemenu');

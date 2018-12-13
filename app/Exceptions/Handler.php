@@ -47,6 +47,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+        return parent::render($request, $exception);
+
+
         $parse = parse_url(url()->full());
         //$ref = $parse['path'];
         $ref = strtolower('/'.$request->path());
