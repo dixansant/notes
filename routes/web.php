@@ -41,3 +41,24 @@ Route::post('admin/newmenu', 'OwnerController@newMenuAction')->name('admin.newme
 Route::post('admin/savemenu', 'OwnerController@saveMenuAction')->name('admin.save');
 Route::post('admin/movemenu', 'OwnerController@moveMenuAction')->name('admin.movemenu');
 Route::post('admin/removemenu', 'OwnerController@removeMenuAction')->name('admin.removemenu');
+
+/*Sistema*/
+
+
+Route::get('filtrar/{tipo}', 'CommonController@filtroAction')->name('filtrar.alquiler');
+Route::get('home/crear/alquiler', 'CommonController@crearAction')->name('crear.alquiler');
+Route::post('crear/alquiler', 'CommonController@salvarAction')->name('alquiler.enviar');
+Route::post('crear/media', 'CommonController@mediaAction')->name('crear.media');
+
+
+/* Filtros */
+Route::get('home/filtrar/alquiler', 'CommonController@filtroAlquilerAction')->name('filtrar.alquiler');
+Route::get('home/filtrar/venta', 'CommonController@filtroVentaAction')->name('filtrar.alquiler');
+Route::get('home/tipo/{tipo}', 'CommonController@filtroAction')->name('filtrar.alquiler');
+
+
+/* */
+Route::get('temp_medias/{filename}', 'CommonController@tempMediaAction')->name('imagen.temporal');
+Route::get('home/mis/alquileres', 'CommonController@misAlquieresAction')->name('mis.alquileres');
+Route::get('home/editar/{alquiler}', 'CommonController@editarAction')->name('aditar.alquiler');
+Route::get('detalles/{alquiler}', 'CommonController@detallesAction')->name('ver.detalles');

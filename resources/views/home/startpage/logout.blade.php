@@ -1,8 +1,17 @@
 @extends('layouts.partials')
 @section('content_partial')
 
-    <script>
+    <script class="partial">
         // eliminar todas las scenas execto
+
+
+        $('.scene[reference]').each(function () {
+            ref= $(this).attr('reference');
+            if (ref != '/home' && ref != '/home/logout' && ref != 'errortemplate')
+                $(this).remove();
+        });
+
+        location.href='#/home'
 
         {{--
         clearScenes('{{$ref}}');
@@ -19,7 +28,8 @@
         //alert('desconectando .....')
     </script>
 
-    @include('home.partials.topmenu')
-    @include('home.startpage');
+    @include('home.partials.topmenu', ['idnav'=>'navbar'])
+    @include('home.partials.usermenu')
+    @include('home.partials.primary')
 
 @endsection

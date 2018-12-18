@@ -6,16 +6,10 @@
 
 <div class="partials">
 
-    <!-- DIVISION -->
-
-    @include('home.partials.topmenu')
-
-    <!-- DIVISION -->
-
+    @include('home.partials.topmenu', ['idnav'=>'navbar'])
+    @include('home.partials.usermenu')
     @include('home.startpage');
-
-    <!-- DIVISION -->
-
+    @include('home.partials.primary')
 
     <script class="partial">
         // Al iniciar, borra todas las escenas

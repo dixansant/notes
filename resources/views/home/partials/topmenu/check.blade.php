@@ -6,11 +6,9 @@
     }*/
 @endphp
 
-@php($menues = \App\Util\Umenu::all_menues_new('menu.main'))
+@php($menues = \App\Util\Umenu::all_menues_new($family))
+@include('layouts.menu', ['menues'=>$menues, 'classMainMenu'=>'dropdown-text'])
 
-@extends('layouts.menu')
-@section('content_menu')
-@endsection
 
 
 {{--

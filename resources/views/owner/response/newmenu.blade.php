@@ -3,7 +3,7 @@
 
 
     <li id="li_{{$menu->id}}" parent="#item_{{$parent->id}}" class="partial li_ref_{{ $menu->id }}">
-        <a ref="{{$menu->id}}" data="{!! base64_encode(json_encode($menu)) !!}"
+        <a id="a_{{$menu->id}}" ref="{{$menu->id}}" data="{!! base64_encode(json_encode($menu)) !!}"
            class="item">{{$menu->title}}</a>
         <ul id="item_{{$menu->id}}">
             <li class="first" dest="{{ $menu->id }}">

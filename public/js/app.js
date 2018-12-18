@@ -98,6 +98,8 @@ $(function () {
         if ($(this).is('.disabled')) return false;
     }).on('click', '[href]', function () { // CLICK EN UN HREF
 
+
+
         if ($(this).attr('href').indexOf('javascript:') != -1) return;
         check_alert(this);
 
@@ -139,6 +141,7 @@ $(function () {
     // se oculte
 
     $('.dropdown-menu-content').click(function(e){
+        if($(':focus[href]').get(0)==null)
         e.stopPropagation();
     })
 
@@ -153,6 +156,8 @@ $(function () {
         }
     })
 
+
+    checkQuery();
 
 
 
@@ -221,6 +226,8 @@ function hrefaction(isValidate) {
         }
     }
 
+
+
     $(this).parents('.modal').prop('target', this);
 
     if ($(this).attr('data-toggle')) return;
@@ -245,12 +252,13 @@ function hrefaction(isValidate) {
 
     if (href.indexOf('!') == 0) { // llamada ajax
 
+        //alert(get_query())
         _ajax({
-            data: get_query(),
+            //data: get_query(),
             url: href.substr(1)
         })
 
-        $('.dropdown.open').removeClass('open'); //
+        $('.open').removeClass('open'); //
         return false;
     }
 
@@ -295,6 +303,7 @@ function relocate(xh) {
 
 
 
+
     //console.log(xh)
 
     //return;
@@ -328,7 +337,11 @@ function relocate(xh) {
     }
 
 
+
+
+    //var go = base_path + ph.join('/')+(xh[1]?'?'+xh[1]:'')
     var go = base_path + ph.join('/')
+
 
 
     if (go == lh) {
@@ -352,6 +365,7 @@ function relocate(xh) {
 
         //return
         checkQuery()
+
 
 
         //alert(go + ' ' + lh + " "+1)
@@ -586,22 +600,16 @@ querys['dialog'] = function () {
 
 querys['page'] = function () {
 
-    j = get_query();
-    if (j.target) {
-        $pgnt = $('.pagination[targetname="' + j.target + '"]');
-        perpage = parseInt($pgnt.attr('itemsperpage'))
-        clss = $pgnt.attr('targetname') || j.target;
+    j =
 
-        $('.' + clss).each(function (i) {
-            if (i >= (j.page - 1) * perpage && i < (j.page - 1) * perpage + perpage) {
-                $(this).fadeIn().removeClass('hidden')
-            } else {
-                $(this).addClass('hidden')
-            }
-        });
-    }
+    pt=location.href.split('#!/');
 
-    // console.log()
+
+    _ajax({
+        url: '/'+pt[1] ,
+
+        type: 'get'
+    })
 }
 
 function get_query(q, path) {
@@ -763,13 +771,13 @@ function runActionMode(w, q) {
     //if (q==null) {
     w.selectedIndex = 0;
 
-    if (fix = $(w).attr('fixed')) {
+    //if (fix = $(w).attr('fixed')) {
         //$('.selectpicker').selectpicker('val', fix);
-    }
+    //}
 
 
     //}
-    console.log("---->" + q)
+    //console.log("---->" + q)
 }
 
 hwn = [];

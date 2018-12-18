@@ -5,9 +5,11 @@
 --}}
 
 @php
-    $show=isset($show)?$show:false;
-    $footer=isset($show)?$show:true;
-    $forward=isset($forward)?' forward="'.$forward.'"':''
+
+
+$show=isset($show)?$show:false;
+$footer=isset($footer)?$footer:false;
+$forward=isset($forward)?' forward="'.$forward.'"':''
 
 @endphp
 <div reference="{{ $reference }}" class="modal fade" id="{{ $id  }}" tabindex="-1" role="dialog"

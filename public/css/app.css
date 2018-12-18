@@ -1,6 +1,6 @@
 BODY {
     apadding-top: 60px;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Montserrat';
 }
 
 .is-invalid {
@@ -191,8 +191,8 @@ LABEL.dsdropdown {
 }
 
 
-
-.dropdown-main-menu >a:after {
+/* poner flechita en menu main */
+.dropdown-text >.dropdown-toggle:after {
     display: block;
     content: " ";
     float: right;
@@ -206,7 +206,7 @@ LABEL.dsdropdown {
     margin-left: 7px;
 }
 
-.dropdown-submenu>a:after {
+.dropdown-text>a:after {
     display: block;
     content: " ";
     float: right;
@@ -234,29 +234,20 @@ LABEL.dsdropdown {
 
 }
 
-
-.dropdown-main-menu > .dropdown-menu {
-    margin-top: 7px !important;
-}
-
-/* add an arrow to the dropdown menus*/
-.dropdown-main-menu > .dropdown-menu:before {
+.dropdown-menu:before {
     position: absolute;
     top: -7px;
-    right: 9px;
     display: inline-block;
     border-right: 7px solid transparent;
     border-bottom: 7px solid #ccc;
     border-left: 7px solid transparent;
     border-bottom-color: #ccc;
     content: '';
-
 }
 
-.dropdown-main-menu > .dropdown-menu:after {
+.dropdown-menu:after {
     position: absolute;
     top: -6px;
-    right: 10px;
     display: inline-block;
     border-right: 6px solid transparent;
     border-bottom: 6px solid #fff;
@@ -265,11 +256,38 @@ LABEL.dsdropdown {
 }
 
 
+/* add an arrow to the dropdown menus */
+.user-menu > .dropdown-menu:before , .navbar-right  .dropdown-main-menu > .dropdown-menu:before {
+    right: 17px;
+
+}
+
+.user-menu > .dropdown-menu:after,  .navbar-right .dropdown-main-menu > .dropdown-menu:after {
+    right: 18px;
+}
+
+.nav-left .dropdown-menu:before{
+    left: 17px !important;
+}
+
+.nav-left .dropdown-menu:after {
+    top: -6px;
+    left: 18px !important;
+}
+
+
 .multi-level .dropdown-menu {
     margin-left: 7px !important;
 
 
 }
+
+.navbar {
+    background-color: #cfdddd;
+}
+
+/* flecha de costado*/
+
 
 .multi-level .dropdown-menu:before {
     position: absolute;
@@ -293,4 +311,36 @@ LABEL.dsdropdown {
     border-left: 6px solid transparent;
     border-top: 6px solid transparent;
     content: '';
+}
+
+.navbar-right .dropdown-menu {
+    right: 0;
+    left: auto;
+
+}
+
+.navbar-right {
+    margin-right: 0px;
+}
+
+.navbar-right>li>.dropdown-menu {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* para adjustar el menu con iconos */
+@media (min-width: 768px) {
+    .navbar-right > li > a {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+.user-menu {
+    a---margin-left: 40px;
+}
+
+.dropdown-menu {
+    z-index: 4000;
 }

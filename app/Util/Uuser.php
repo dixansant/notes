@@ -35,6 +35,9 @@ class Uuser extends User
 
         foreach ($grant_data as $gd) {
 
+            if ($gd=='ALL') return true;
+            if ($gd=='USER_CHECK' && auth()->check()) return true;
+            if ($gd=='USER_GUEST' && !auth()->check()) return true;
             if($gd_arr = Priv::where('destiny', $gd)->get()) {
 
                 foreach ($gd_arr as $gd_item) {

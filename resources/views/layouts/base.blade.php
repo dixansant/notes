@@ -31,7 +31,7 @@
 
     <!-- Fonts and Icons -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
     <link href="{{ asset('css/themify-icons.css')}}" rel="stylesheet" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 

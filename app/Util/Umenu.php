@@ -18,7 +18,8 @@ class Umenu extends Menu
     static function all_menues_new($family,$all=false){
         $ret=[];
 
-        $user_grants = \App\Util\Uuser::user_grants(Auth()->user());
+        //echo ($family!='')?1:0;
+        $user_grants = (Auth()->user())?\App\Util\Uuser::user_grants(Auth()->user()):['USER_GUEST'];
 
         $menues = Menu::orderby('position');
         if ($family!='') $menues = $menues->where('family',$family);
@@ -26,9 +27,12 @@ class Umenu extends Menu
         foreach ($menues->get() as $mnu) {
             $menu_grants = self::menu_grants($mnu); // si es submenu, hereda del padre
             if (($mnu->active==true && Uuser::checks_grants($user_grants,$menu_grants)) || $all){ // si
-                //if (is_null($mnu->parent)){
+
+                //echo $mnu->family."<br>";
+                $ret[]=$mnu;
+                /*if (is_null($mnu->parent)){
                     $ret[]=$mnu;
-                /*} else {
+                } else {
 
                     $find=-1;
                     $k=0;
@@ -56,7 +60,8 @@ class Umenu extends Menu
     static function all_menues($family,$all=false){
         $ret=[];
 
-        $user_grants = \App\Util\Uuser::user_grants(Auth()->user());
+
+        $user_grants = (Auth()->user())?\App\Util\Uuser::user_grants(Auth()->user()):['USER_GUEST'];
 
         $menues = Menu::orderby('family')->orderby('position')->orderby('parent');
         if ($family!='') $menues = $menues->where('family',$family);
@@ -83,8 +88,9 @@ class Umenu extends Menu
 
         $ret=is_null($menu->grant_name)?[]:explode(',',$menu->grant_name);
 
-        if ($parent=Menu::find($menu->parent))
-            $ret=array_merge($ret,self::menu_grants($parent));
+        //habilitar que hereda del padre
+        /*if ($parent=Menu::find($menu->parent))
+            $ret=array_merge($ret,self::menu_grants($parent));*/
 
         return $ret;
     }
@@ -98,7 +104,7 @@ class Umenu extends Menu
         switch ($menu->linkref){
             case 'route':
                 if (Route::has($menu->href))
-                    return route($menu->href,[],false);
+                    return "!".route($menu->href,[],false);
                 return "/".$menu->href;
                 break;
             default:

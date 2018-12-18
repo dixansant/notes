@@ -14,7 +14,7 @@ class AppvarSeeder extends Seeder
     {
         $appvar = new Appvar();
         $appvar->name = 'appname';
-        $appvar->value = 'Render.lib';
+        $appvar->value = 'Alquileres Uruguay';
         $appvar->save();
     }
 }

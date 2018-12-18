@@ -21,7 +21,7 @@
             <div class="col-md-12">
                 @include('owner.mnubuilder.form')
             </div>
-            {{--
+
             <ul>
                 @foreach($menus as $family=> $menues)
                     @foreach($menues as $k=>$mnu)
@@ -29,7 +29,7 @@
                     @endforeach
                 @endforeach
             </ul>
-            --}}
+
 
         </div>
 
